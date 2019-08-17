@@ -1,10 +1,10 @@
 const firebaseConfig = {
-	apiKey: "AIzaSyCt3lbyHBij3lcjLFvxX_DBn6IT5GZg_zs",
-    authDomain: "usercalender.firebaseapp.com",
-    databaseURL: "https://usercalender.firebaseio.com",
-    projectId: "usercalender",
-    storageBucket: "usercalender.appspot.com",
-    messagingSenderId: "104529036841"
+	apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: ",
+    storageBucket: "",
+    messagingSenderId: ""
 };
 
 firebase.initializeApp(firebaseConfig);

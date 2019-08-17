@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <title></title>
+        <link  href="./css/style.css" rel="stylesheet">
+        <link  href="./css/login.css" rel="stylesheet">
+        
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- icon in the highest resolution we need it for -->
+<link rel="icon" sizes="192x192" href="icon.png">
+
+<!-- reuse same icon for Safari -->
+<link rel="apple-touch-icon" href="ios.png">
+
+<!-- multiple icons for IE -->
+<meta name="msapplication-square310x310logo" content="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+  <body>
+
+    <div class="mobile-header z-depth-1">
+
+      <div class="row" style="display:flex">
+        <div class="col-2">
+          <a href="#" data-activates="sidebar" class="button-collapse" >
+            <i class="material-icons">menu</i>
+          </a>
+        </div>
+        <div class="col">
+          <h4>Events</h4>
+   
+        </div>
+       
+        
+      </div>
+      <div class="col">
+          <button class="addEvent" style="float: right;
+          margin-right: 30px;
+          margin-top: -38px;
+          padding: 4px;" onclick="checkLoginButton()" id="showlogin">Login</Button>
+   
+        </div>
+    </div>
+<!--new login  -->
+
+<div class="mobile-header z-depth-1">
+
+  <div class="row" style="display:flex">
+    <div class="col-2">
+      <a href="#" data-activates="sidebar" class="button-collapse" >
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+    <div class="col">
+      <h4>Events</h4>
+
+    </div>
+   
+    
+  </div>
+  <div class="col">
+      <button class="addEvent" style="float: right;
+      margin-right: 30px;
+      margin-top: -38px;
+      padding: 4px;" onclick="checkLoginButton()"
+       id="showlogin">Login</Button>
+
+    </div>
+</div>
+
+<!--  -->
+    <div class="main-wrapper">
+
+      <div class="sidebar-wrapper z-depth-2 side-nav fixed" id="sidebar">
+
+        <div class="sidebar-title">
+            <div class="col">
+                <Button class="addEvent" style="float: right;
+                margin-right: 30px;
+                margin-top: -38px;
+                padding: 4px;" id="showlogin1" onclick="checkLoginButton()">Login</Button>
+         
+              </div>
+          <h4>Events</h4>
+          <h5 id="eventDayName">Date</h5>
+        </div>
+        <div class="sidebar-events" id="sidebarEvents">
+          <div class="empty-message">Sorry, no events to selected date</div>
+        </div>
+
+      </div>
+
+      <div class="content-wrapper grey lighten-3">
+        <div class="container">
+
+          <div class="calendar-wrapper z-depth-2">
+
+            <div class="header-background">
+              <div class="calendar-header">
+
+                <a class="prev-button" id="prev">
+                  <i class="material-icons">keyboard_arrow_left</i>
+                </a>
+                <a class="next-button" id="next">
+                  <i class="material-icons">keyboard_arrow_right</i>
+                </a>
+
+                <div class="row header-title">
+
+                  <div class="header-text">
+                    <h3 id="month-name">February</h3>
+                    <h5 id="todayDayName">Today is Friday 7 Feb</h5>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="calendar-content">
+              <div id="calendar-table" class="calendar-cells">
+
+                <div id="table-header">
+                  <div class="row">
+                      <!-- <div class="col" ></div> -->
+                    <div class="col" style="padding-left: 10px">Mon</div>
+                    <div class="col">Tue</div>
+                    <div class="col">Wed</div>
+                    <div class="col">Thu</div>
+                    <div class="col">Fri</div>
+                    <div class="col">Sat</div>
+                    <div class="col">Sun</div>
+                  </div>
+                </div>
+
+                <div id="table-body" class="">
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="calendar-footer">
+              <div class="emptyForm" id="emptyForm">
+                <h4 id="emptyFormTitle">No events now</h4>
+                <a class="addEvent" id="changeFormButton">Add new</a>
+                <a class="addEvent" id="addDiary">Add Diary</a>
+
+            </div>
+              <div class="addForm" id="addForm">
+                <h4>Add new event</h4>
+
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="eventTitleInput" type="text" class="validate">
+                    <label for="eventTitleInput">Title</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="eventDescInput" type="text" class="validate">
+                    <label for="eventDescInput">Description</label>
+                  </div>
+                </div>
+
+                <div class="addEventButtons">
+                  <a class="waves-effect waves-light btn blue lighten-2" id="addEventButton">Add</a>
+                  <a class="waves-effect waves-light btn grey lighten-2" id="cancelAdd">Cancel</a>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+<!-- Login -->
+<div class="loginMain" id="loginMain">
+  <div class="login">
+      <i class="material-icons" style="float:right;cursor: pointer;margin-top: 51px;" onclick="hideLogin()">cancel</i>
+
+    <div class="login_image">
+
+      <img src="data:image/png;base64,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" alt="">
+
+    </div>
+    <div class="login_content">
+      <div id="loginForm">
+        <form>
+          <div class="login_content_form">              
+            <h3 id="logintitle" style="    margin-top: -42px;">  Login</h3>
+            </div>
+        <div class="login_content_form">              
+          <input type="text" placeholder="Username" id="emailLogin">
+        </div>
+        <div class="login_content_form">           
+          <input type="password" placeholder="xxxxxxx" id="pwdLogin">
+        </div>
+        <div id="loginError" style="color:red">           
+            
+          </div>
+        <button class="login_btn" id="login_btn" onclick="login()">Login</button>
+        <div  class="login_content_form">              
+           <a id="loginAction" style="cursor: pointer;"> Don't have account? Register</a>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+   
+    <script>
+      $(".button-collapse").sideNav();
+    </script>
+ <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+
+ 
+
+
+	
+<script type="text/javascript" src="./js/main.js">
+	</script>
+</body>
+</html>

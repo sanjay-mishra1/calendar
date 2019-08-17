@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <link  href="./css/style.css" rel="stylesheet">
+        <!-- <link  href="./css/login.css" rel="stylesheet"> -->
+        
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- icon in the highest resolution we need it for -->
+<link rel="icon" sizes="192x192" href="icon.png">
+
+<!-- reuse same icon for Safari -->
+<link rel="apple-touch-icon" href="ios.png">
+
+<!-- multiple icons for IE -->
+<meta name="msapplication-square310x310logo" content="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style type="text/css">
+
+#cover{
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.6);
+    z-index:5;
+    width:100%;
+    height:100%;
+    display:none;
+}
+#loginScreen
+{
+    height:380px;
+    width:340px;
+    margin:0 auto;
+    position:relative;
+    z-index:10;
+    display:none;
+    background: url(login.png) no-repeat;
+    border:5px solid #cccccc;
+    border-radius:10px;
+}
+#loginScreen:target, #loginScreen:target + #cover{
+    display:block;
+    opacity:2;
+}
+.cancel
+{
+    display:block;
+    position:absolute;
+    top:3px;
+    right:2px;
+    background:rgb(245,245,245);
+    color:black;
+    height:30px;
+    width:35px;
+    font-size:30px;
+    text-decoration:none;
+    text-align:center;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+
+<div class="mobile-header z-depth-1">
+
+      <div class="row" style="display:flex">
+        <div class="col-2">
+          <a href="#" data-activates="sidebar" class="button-collapse" style="">
+            <i class="material-icons">menu</i>
+          </a>
+        </div>
+        <div class="col">
+          <h4>Events</h4>
+   
+        </div>
+       
+        
+      </div>
+      <!-- onclick="checkLoginButton()" -->
+      <div class="col">
+        <a href="#loginScreen">
+          <button class="addEvent" style="float: right;
+          margin-right: 30px;
+          margin-top: -38px;
+          padding: 4px;" id="showlogin">Login</button>
+    </a>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+
+      <div class="sidebar-wrapper z-depth-2 side-nav fixed" id="sidebar">
+
+        <div class="sidebar-title">
+            <div class="col">
+                <Button class="addEvent" style="float: right;
+                margin-right: 30px;
+                margin-top: -38px;
+                padding: 4px;" id="showlogin1" href="#loginScreen" onclick="checkLoginButton()">Login</Button>
+         
+              </div>
+          <h4>Events</h4>
+          <h5 id="eventDayName">Date</h5>
+        </div>
+        <div class="sidebar-events" id="sidebarEvents">
+          <div class="empty-message">Sorry, no events to selected date</div>
+        </div>
+
+      </div>
+
+      <div class="content-wrapper grey lighten-3">
+        <div class="container">
+
+          <div class="calendar-wrapper z-depth-2">
+
+            <div class="header-background">
+              <div class="calendar-header">
+
+                <a class="prev-button" id="prev">
+                  <i class="material-icons">keyboard_arrow_left</i>
+                </a>
+                <a class="next-button" id="next">
+                  <i class="material-icons">keyboard_arrow_right</i>
+                </a>
+
+                <div class="row header-title">
+
+                  <div class="header-text">
+                    <h3 id="month-name">February</h3>
+                    <h5 id="todayDayName">Today is Friday 7 Feb</h5>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="calendar-content">
+              <div id="calendar-table" class="calendar-cells">
+
+                <div id="table-header">
+                  <div class="row">
+                      <!-- <div class="col" ></div> -->
+                    <div class="col" style="padding-left: 10px">Mon</div>
+                    <div class="col">Tue</div>
+                    <div class="col">Wed</div>
+                    <div class="col">Thu</div>
+                    <div class="col">Fri</div>
+                    <div class="col">Sat</div>
+                    <div class="col">Sun</div>
+                  </div>
+                </div>
+
+                <div id="table-body" class="">
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="calendar-footer">
+              <div class="emptyForm" id="emptyForm">
+                <h4 id="emptyFormTitle">No events now</h4>
+                <a class="addEvent" id="changeFormButton">Add new</a>
+                <a class="addEvent" id="addDiary">Add Diary</a>
+
+            </div>
+              <div class="addForm" id="addForm">
+                <h4>Add new event</h4>
+
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="eventTitleInput" type="text" class="validate">
+                    <label for="eventTitleInput">Title</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="eventDescInput" type="text" class="validate">
+                    <label for="eventDescInput">Description</label>
+                  </div>
+                </div>
+
+                <div class="addEventButtons">
+                  <a class="waves-effect waves-light btn blue lighten-2" id="addEventButton">Add</a>
+                  <a class="waves-effect waves-light btn grey lighten-2" id="cancelAdd">Cancel</a>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div align="center">
+    <br><br><br><br>
+    <a href="#loginScreen" class="button">Click here to Log In</a>
+</div>
+<div id="loginScreen">
+    <a href="#" class="cancel">&times;</a>
+</div>
+<div id="cover" >
+</div>
+</body>
+</html>

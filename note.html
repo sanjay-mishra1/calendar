@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Diary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" sizes="192x192" href="icon.png">
+
+<!-- reuse same icon for Safari -->
+<link rel="apple-touch-icon" href="ios.png">
+
+<!-- multiple icons for IE -->
+<meta name="msapplication-square310x310logo" content="icon.png">
+    <link  href="./css/diarystyle.css" rel="stylesheet">
+     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    </head>
+ 
+<body>
+        <div class="calender">
+                <div class="calender__top"></div>
+                <div class="calender__content">
+                  <p class="date date__month"></p>
+                  <p class="date date__day"></p>
+                  <p class="date date__week"></p>
+                </div> 
+              </div>
+        <div class="content"> 
+                <div class="notebook-page"> 
+                  <textarea id="msg"></textarea>
+                  <div id="diaryText" class="text-edit"><br></div>
+                </div>
+                <script>
+                               let url_string= window.location.href;
+
+                  var url = new URL(url_string);
+                  var c = url.searchParams.get("diaryContent");
+                  if(!c){
+                    document.getElementById("diaryText").innerHTML="Dear Diary, ";
+                  }else{
+                    document.getElementById("diaryText").innerHTML=c;
+
+                  } 
+                </script>
+                <aside class="context">
+                  <div class="explanation">
+                        <a class="addEvent" id="addEventButton">Save Diary</a>
+                    </aside>
+               
+              </div>
+
+
+              <script>
+              //for calendar
+ var url = new URL(url_string);
+var c = url.searchParams.get("date");
+ var today = new Date(c);
+
+var day = today.getDate();
+var month = today.getMonth()+1; //Januar is 0!
+var year = today.getFullYear();
+var week = today.getDay();
+
+var monthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+var weekday= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+
+document.querySelector(".date__month").innerHTML = monthes[month -1];
+document.querySelector(".date__day").innerHTML = day;
+document.querySelector(".date__week").innerHTML = weekday[week];
+              </script>
+      <script>
+         var showText = function (target, message, index, interval) {
+  if (index < message.length) { 
+    $(target).append(message[index++]); 
+    setTimeout(function () { showText(target, message, index, interval); }, interval); 
+  } 
+}
+
+$(document).ready(function() {
+  setTimeout(function() {
+    var text = $('.text-edit').html().replace(/<br *\/?>/gi,'\n');
+  showText("#msg", text, 0, 100); 
+  }, 2000);
+});
+
+
+
+
+      </script>
+      <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+      <script src="./js/saveDiary.js"></script>
+
+    </body>
+      </html>
